@@ -1,39 +1,70 @@
-# General Go template repository
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/cert-manager-crossplane-resources/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/cert-manager-crossplane-resources/tree/main)
 
-This is a general template repository containing some basic files every GitHub repo owned by Giant Swarm should have.
+[Read me after cloning this template (GS staff only)](https://handbook.giantswarm.io/docs/dev-and-releng/app-developer-processes/adding_app_to_appcatalog/)
 
-Note also these more specific repositories:
+# cert-manager-crossplane-resources chart
 
-- [template-app](https://github.com/giantswarm/template-app)
-- [gitops-template](https://github.com/giantswarm/gitops-template)
-- [python-app-template](https://github.com/giantswarm/python-app-template)
+Giant Swarm offers a cert-manager-crossplane-resources App which can be installed in workload clusters.
+Here we define the cert-manager-crossplane-resources chart with its templates and default configuration.
 
-## Creating a new repository
+**What is this app?**
 
-Please do not use the `Use this template` function in the GitHub web UI.
+**Why did we add it?**
 
-Check out the according [handbook article](https://handbook.giantswarm.io/docs/dev-and-releng/repository/go/) for better instructions.
+**Who can use it?**
 
-### Setting up
+## Installing
 
-You need to set the name in several places
+There are several ways to install this app onto a workload cluster.
 
-- `go.mod` - change the name from `crossplane-fn-template` to something reflective of your function
-- `input/v1beta1/input.go` - change `+groupName=template.fn.giantswarm.io` to something unique for your function
-- `fn.go` - set `composedName` to the name of your function (I normally use basename $module)
+- [Using GitOps to instantiate the App](https://docs.giantswarm.io/advanced/gitops/apps/)
+- [Using our web interface](https://docs.giantswarm.io/platform-overview/web-interface/app-platform/#installing-an-app).
+- By creating an [App resource](https://docs.giantswarm.io/use-the-api/management-api/crd/apps.application.giantswarm.io/) in the management cluster as explained in [Getting started with App Platform](https://docs.giantswarm.io/getting-started/app-platform/).
 
-### Building
+## Configuring
 
-When editing `input`, do not forget to run `go generate ./...` otherwise your input will be out of line.
+### values.yaml
 
-### Some suggestions for your README
+**This is an example of a values file you could upload using our web interface.**
 
-After you have created your new repository, you may want to add some of these badges to the top of your README.
+```yaml
+# values.yaml
 
-- **CircleCI:** After enabling builds for this repo via [this link](https://circleci.com/setup-project/gh/giantswarm/REPOSITORY_NAME), you can find badge code on [this page](https://app.circleci.com/settings/project/github/giantswarm/REPOSITORY_NAME/status-badges).
+```
 
-- **Go reference:** use [this helper](https://pkg.go.dev/badge/) to create the markdown code.
+### Sample App CR and ConfigMap for the management cluster
 
-- **Go report card:** enter the module name on the [front page](https://goreportcard.com/) and hit "Generate report". Then use this markdown code for your badge: `[![Go report card](https://goreportcard.com/badge/github.com/giantswarm/REPOSITORY_NAME)](https://goreportcard.com/report/github.com/giantswarm/REPOSITORY_NAME)`
+If you have access to the Kubernetes API on the management cluster, you could create
+the App CR and ConfigMap directly.
 
-- **Sourcegraph "used by N projects" badge**: for public Go repos only: `[![Sourcegraph](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME/-/badge.svg)](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME)`
+Here is an example that would install the app to
+workload cluster `abc12`:
+
+```yaml
+# appCR.yaml
+
+```
+
+```yaml
+# user-values-configmap.yaml
+
+```
+
+See our [full reference on how to configure apps](https://docs.giantswarm.io/getting-started/app-platform/app-configuration/) for more details.
+
+## Compatibility
+
+This app has been tested to work with the following workload cluster release versions:
+
+- _add release version_
+
+## Limitations
+
+Some apps have restrictions on how they can be deployed.
+Not following these limitations will most likely result in a broken deployment.
+
+- _add limitation_
+
+## Credit
+
+- {APP HELM REPOSITORY}
