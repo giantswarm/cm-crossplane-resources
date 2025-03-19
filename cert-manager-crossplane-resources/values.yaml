@@ -1,0 +1,9 @@
+name: cert-manager-crossplane-resources
+serviceType: managed
+
+clusterName: ""
+accountID: ""
+awsPartition: "aws"
+region: ""
+oidcDomain: ""
+oidcDomains: []
