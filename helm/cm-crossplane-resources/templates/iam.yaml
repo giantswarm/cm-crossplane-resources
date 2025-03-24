@@ -25,9 +25,6 @@ spec:
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
-              "StringEquals": {
-                "{{$oidcDomain}}:aud": "sts.amazonaws.com"
-              },
               "StringLike": {
                 "{{$oidcDomain}}:sub": "system:serviceaccount:kube-system:cert-manager-app"
               }
