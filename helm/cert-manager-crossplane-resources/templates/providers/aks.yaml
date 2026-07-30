@@ -1,0 +1,16 @@
+{{- if eq .Values.provider "aks" }}
+apiVersion: crossplane.giantswarm.io/v1alpha1
+kind: WorkloadIdentity
+metadata:
+  name: {{ .Values.clusterName }}-crossplane
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  clusterName: {{ .Values.clusterName }}
+  provider: {{ .Values.provider }}
+  location: {{ .Values.providers.azure.location }}
+  resourceGroupName: {{ .Values.providers.azure.resourceGroup }}
+  subject: system:serviceaccount:kube-system:cert-manager-app
+  subscriptionID: {{ .Values.providers.azure.subscriptionId }}
+{{- end }}
