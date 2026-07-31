@@ -10,7 +10,7 @@ spec:
   clusterName: {{ .Values.clusterName }}
   provider: {{ .Values.provider }}
   location: {{ .Values.providers.azure.location }}
-  resourceGroupName: {{ .Values.providers.azure.resourceGroup }}
+  resourceGroupName: {{ include "azure.resourceGroupName" . }}
   subject: system:serviceaccount:kube-system:cert-manager-app
   subscriptionID: {{ .Values.providers.azure.subscriptionId }}
 {{- end }}
