@@ -14,13 +14,13 @@ spec:
   subject: system:serviceaccount:kube-system:cert-manager-app
   subscriptionID: {{ .Values.providers.azure.subscriptionId }}
   template: |
-      cert-manager:
-        giantSwarmClusterIssuer:
-          acme:
-            dns01:
-              azureDNS:
-                identityClientID: "${clientID}"
+      giantSwarmClusterIssuer:
+        acme:
+          dns01:
+            azureDNS:
+              identityClientID: "${clientID}"
 
+      cert-manager:
         extraObjects:
           - |
             apiVersion: v1
