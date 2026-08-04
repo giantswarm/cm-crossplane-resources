@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `WorkloadIdentity` resource for AKS provider.
+
 ## [0.1.1] - 2026-03-16
 
 ### Changed

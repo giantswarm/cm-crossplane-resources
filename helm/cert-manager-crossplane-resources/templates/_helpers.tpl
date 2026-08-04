@@ -69,3 +69,10 @@ Check if Azure is properly configured
 {{- false -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Determine the resource group name to use.
+*/}}
+{{- define "azure.resourceGroupName" -}}
+{{ .Values.providers.azure.resourceGroup | default .Values.clusterName }}
+{{- end -}}
