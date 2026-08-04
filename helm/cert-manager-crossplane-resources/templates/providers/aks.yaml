@@ -15,6 +15,12 @@ spec:
   subscriptionID: {{ .Values.providers.azure.subscriptionId }}
   template: |
       cert-manager:
+        giantSwarmClusterIssuer:
+          acme:
+            dns01:
+              azureDNS:
+                identityClientID: "${clientID}"
+
         extraObjects:
           - |
             apiVersion: v1
