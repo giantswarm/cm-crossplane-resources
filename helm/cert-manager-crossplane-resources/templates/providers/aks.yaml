@@ -27,7 +27,7 @@ spec:
             kind: ConfigMap
             metadata:
               name: cert-manager-identity
-              namespace: {{ .Release.Namespace }}
+              namespace: kube-system
               labels:
                 {{- include "labels.common" . | nindent 16 }}
             data:
